@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- hibatenate与数据库的彼此交互，必须由session factory 获取session -->
+    <session-factory>
+        <!-- 连库的相关参数 -->
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="connection.url">
+            jdbc:oracle:thin:@localhost:1521:ORCL
+        </property>
+        <property name="connection.username">java66</property>
+        <property name="connection.password">java66</property>
+
+        <!-- 辅助参数 -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- 方言 根据不同的库生成适合该库的sql语句 -->
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+        <!-- 当前用户与会话进行绑定 保证唯一性 -->
+        <property name="current_session_context_class">thread</property>
+        <property name="javax.persistence.validation.mode">none</property>
+
+        <mapping resource="cn/entity/Questions.hbm.xml"/>
+        <mapping resource="cn/entity/Answers.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

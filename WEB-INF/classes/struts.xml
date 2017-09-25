@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!-- UI标签 -->
+    <constant name="struts.ui.theme" value="simple"/>
+    <package name="default" extends="json-default" namespace="/">
+        <action name="question_*" class="cn.action.QuestionsAction" method="{1}">
+            <result name="show">/index.jsp</result>
+            <result name="showall">/detail_update.jsp</result>
+            <result type="json" name="success2">
+                message,username,password
+            </result>
+            <result type="json" name="login">message</result>
+            <result name="success3" type="redirectAction">question_showQuestions</result>
+            <result name="update" type="redirectAction">question_showQuestions</result>
+            <result name="delete" type="redirectAction">question_showQuestions</result>
+            <result name="save" type="redirectAction">question_showQuestions</result>
+            <result name="find">/detail.jsp</result>
+            <result name="keep" type="redirectAction">question_showQuestions</result>
+        </action>
+    </package>
+</struts>
